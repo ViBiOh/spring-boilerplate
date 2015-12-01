@@ -1,18 +1,17 @@
 package org.vibioh.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.vibioh.model.Hello;
 
-@Controller
-public class HelloWorldController {
+@RestController
+public class HelloWorldController extends BaseController {
   @Value("${app.name}")
   private String appName;
 
-  @RequestMapping("/")
-  @ResponseBody
-  public String helloWorld() {
-    return "Hello World!, I'm " + appName;
+  @RequestMapping("/hello")
+  public Hello hello() {
+    return new Hello(appName);
   }
 }

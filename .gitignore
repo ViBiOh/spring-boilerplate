@@ -21,15 +21,5 @@ Desktop.ini
 *.iml
 *.iws
 
-# Node Package Manager
-node_modules
-
-# Bower dependencies Manage
-bower_components
-
-# Grunt Builder
-dist
-coverage
-
 # Maven
 target
