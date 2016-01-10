@@ -6,6 +6,7 @@ services:
   - docker
 script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - mvn clean install docker:build -DpushImage
+  - mvn clean install docker:build
+  - docker push vibioh/spring-web-bp:latest
 notifications:
   email: false

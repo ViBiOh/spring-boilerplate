@@ -79,7 +79,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>${docker-spotify.version}</version>
                 <configuration>
-                    <imageName>vibioh/spring-web-bp</imageName>
+                    <imageName>vibioh/spring-web-bp:latest</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
