@@ -1,6 +1,9 @@
 language: java
+sudo: required
 jdk:
   - oraclejdk8
-script: mvn clean install
+services:
+  - docker
+script: mvn clean install docker:build -DpushImage
 notifications:
   email: false
