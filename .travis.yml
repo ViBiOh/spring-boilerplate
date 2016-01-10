@@ -4,6 +4,8 @@ jdk:
   - oraclejdk8
 services:
   - docker
-script: mvn clean install docker:build -DpushImage
+script: |
+  docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  mvn clean install docker:build -DpushImage
 notifications:
   email: false
