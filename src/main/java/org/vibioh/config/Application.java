@@ -8,6 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @EnableAutoConfiguration
+@EnableWebSocket
 @ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
 public class Application {
