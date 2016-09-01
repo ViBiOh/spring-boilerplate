@@ -5,7 +5,7 @@ jdk:
 services:
 - docker
 script:
-- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD}
+- docker login -u=${DOCKER_USER} -p=${DOCKER_PASS}
 - mvn clean install docker:build
 - docker push ${DOCKER_USER}/spring-web-bp
 notifications:
