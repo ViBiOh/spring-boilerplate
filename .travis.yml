@@ -1,12 +1,12 @@
 language: java
 sudo: required
 jdk:
-  - oraclejdk8
+- oraclejdk8
 services:
-  - docker
+- docker
 script:
-  - docker login -e=${DOCKER_EMAIL} -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD}
-  - mvn clean install docker:build
-  - docker push vibioh/spring-web-bp:latest
+- docker login -u=${DOCKER_USERNAME} -p=${DOCKER_PASSWORD}
+- mvn clean install docker:build
+- docker push vibioh/spring-web-bp
 notifications:
   email: false
