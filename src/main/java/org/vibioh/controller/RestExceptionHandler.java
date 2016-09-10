@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class RestExceptionHandler {
-   private static final Logger logger = Logger.getLogger(RestExceptionHandler.class);
+    private static final Logger logger = Logger.getLogger(RestExceptionHandler.class);
 
-   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-   @ExceptionHandler(value = { RuntimeException.class, Exception.class })
-   public void handleException(final Exception e) {
-      logger.error(e.getMessage(), e);
-   }
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(value = {RuntimeException.class, Exception.class})
+    public void handleException(final Exception e) {
+        logger.error(e.getMessage(), e);
+    }
 }

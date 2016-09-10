@@ -17,19 +17,19 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 @ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
-   @Autowired
-   private WebSocketHandler webSocketHandler;
+    @Autowired
+    private WebSocketHandler webSocketHandler;
 
-   @Override
-   public void registerWebSocketHandlers(final WebSocketHandlerRegistry webSocketHandlerRegistry) {
-	webSocketHandlerRegistry.addHandler(webSocketHandler, "/hello");
+    @Override
+    public void registerWebSocketHandlers(final WebSocketHandlerRegistry webSocketHandlerRegistry) {
+        webSocketHandlerRegistry.addHandler(webSocketHandler, "/ws/hello");
 
-	webSocketHandlerRegistry
-		.addHandler(webSocketHandler, "/hello")
-		.withSockJS();
-   }
+        webSocketHandlerRegistry
+                .addHandler(webSocketHandler, "/ws/hello")
+                .withSockJS();
+    }
 
-   public static void main(final String[] args) throws Exception {
-	SpringApplication.run(Application.class, args);
-   }
+    public static void main(final String[] args) throws Exception {
+        SpringApplication.run(Application.class, args);
+    }
 }
