@@ -1,6 +1,7 @@
 package org.vibioh.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Bean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,6 +28,11 @@ public class Application implements WebSocketConfigurer {
         webSocketHandlerRegistry
                 .addHandler(webSocketHandler, "/ws/hello")
                 .withSockJS();
+    }
+
+    @Bean
+    public Clock clock() {
+        return Clock.systemUTC();
     }
 
     public static void main(final String[] args) throws Exception {
