@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class DateService {
-    private Clock clock;
+    private final Clock clock;
     
     @Autowired
     public DateService(final Clock clock) {
