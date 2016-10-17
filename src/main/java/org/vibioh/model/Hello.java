@@ -1,14 +1,12 @@
 package org.vibioh.model;
 
-import org.vibioh.utils.DateHelper;
-
 public class Hello {
     private String name;
     private long moment;
 
-    public Hello(final String name) {
+    public Hello(final String name, final long moment) {
         this.name = name;
-        moment = DateHelper.now().getTime();
+        this.moment = moment;
     }
 
     public String getName() {
