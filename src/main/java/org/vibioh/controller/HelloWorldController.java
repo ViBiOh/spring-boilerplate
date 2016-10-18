@@ -30,7 +30,7 @@ public class HelloWorldController {
         this.dateService = dateService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON.getType())
     @ResponseBody
     @ApiOperation("Default Hello")
     @ApiResponses({
@@ -41,7 +41,7 @@ public class HelloWorldController {
     }
 
 
-    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON.getType())
     @ResponseBody
     @ApiOperation("Hello with given name")
     @ApiResponses({
