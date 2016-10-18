@@ -1,5 +1,6 @@
 package org.vibioh.controller;
 
+import javax.ws.rs.core.MediaType;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -29,9 +30,9 @@ public class HelloWorldController {
         this.dateService = dateService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
     @ResponseBody
-    @ApiOperation("Hello with the default name")
+    @ApiOperation("Default Hello")
     @ApiResponses({
             @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
     })
@@ -40,9 +41,9 @@ public class HelloWorldController {
     }
 
 
-    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON)
     @ResponseBody
-    @ApiOperation("Hello with the given name")
+    @ApiOperation("Hello with given name")
     @ApiResponses({
             @ApiResponse(code = 200, message = "A personalized message with timestamp", response = Hello.class)
     })
