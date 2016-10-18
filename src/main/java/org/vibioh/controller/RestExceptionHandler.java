@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
 public class RestExceptionHandler {
+    public static final String JSON = "application/json";
+
     private static final Logger logger = Logger.getLogger(RestExceptionHandler.class);
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
