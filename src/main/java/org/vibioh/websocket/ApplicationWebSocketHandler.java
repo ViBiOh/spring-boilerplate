@@ -17,18 +17,21 @@ public class ApplicationWebSocketHandler implements WebSocketHandler {
     }
 
     @Override
-    public void handleMessage(final WebSocketSession webSocketSession, final WebSocketMessage<?> webSocketMessage) throws Exception {
+    public void handleMessage(final WebSocketSession webSocketSession, final WebSocketMessage<?> webSocketMessage)
+            throws Exception {
         logger.info("handleMessage : " + webSocketMessage.getPayload());
         webSocketSession.sendMessage(webSocketMessage);
     }
 
     @Override
-    public void handleTransportError(final WebSocketSession webSocketSession, final Throwable throwable) throws Exception {
+    public void handleTransportError(final WebSocketSession webSocketSession, final Throwable throwable)
+            throws Exception {
         logger.error("handleTransportError", throwable);
     }
 
     @Override
-    public void afterConnectionClosed(final WebSocketSession webSocketSession, final CloseStatus closeStatus) throws Exception {
+    public void afterConnectionClosed(final WebSocketSession webSocketSession, final CloseStatus closeStatus)
+            throws Exception {
         logger.info("afterConnectionClosed Status : " + closeStatus);
     }
 
