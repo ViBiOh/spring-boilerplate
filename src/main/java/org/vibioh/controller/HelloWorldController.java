@@ -31,9 +31,9 @@ public class HelloWorldController {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
     @ResponseBody
-    @ApiOperation("Default Hello")
+    @ApiOperation(value = "Default Hello", response = Hello.class)
     @ApiResponses({
-            @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
+            @ApiResponse(code = 200, message = "A greeting message with timestamp", )
     })
     public Hello hello() {
         return new Hello(appName, dateService.now().toEpochMilli());
@@ -42,9 +42,9 @@ public class HelloWorldController {
 
     @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
     @ResponseBody
-    @ApiOperation("Hello with given name")
+    @ApiOperation(value = "Hello with given name", response = Hello.class)
     @ApiResponses({
-            @ApiResponse(code = 200, message = "A personalized message with timestamp", response = Hello.class)
+            @ApiResponse(code = 200, message = "A personalized message with timestamp")
     })
     public Hello helloName(
             @ApiParam(value = "Name to greet", allowMultiple = false, required = true) final @PathVariable
