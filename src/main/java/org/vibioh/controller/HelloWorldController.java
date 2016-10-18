@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.MediaType;
 import org.vibioh.model.Hello;
 import org.vibioh.service.DateService;
 
@@ -30,7 +29,7 @@ public class HelloWorldController {
         this.dateService = dateService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON.getType())
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
     @ResponseBody
     @ApiOperation("Default Hello")
     @ApiResponses({
@@ -41,7 +40,7 @@ public class HelloWorldController {
     }
 
 
-    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON.getType())
+    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
     @ResponseBody
     @ApiOperation("Hello with given name")
     @ApiResponses({
