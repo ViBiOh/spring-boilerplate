@@ -33,7 +33,7 @@ public class HelloWorldController {
     @ResponseBody
     @ApiOperation(value = "Default Hello", response = Hello.class)
     @ApiResponses({
-            @ApiResponse(code = 200, message = "A greeting message with timestamp", )
+            @ApiResponse(code = 200, message = "A greeting message with timestamp")
     })
     public Hello hello() {
         return new Hello(appName, dateService.now().toEpochMilli());
