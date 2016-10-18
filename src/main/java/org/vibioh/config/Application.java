@@ -1,5 +1,9 @@
 package org.vibioh.config;
 
+import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
+import com.mangofactory.swagger.models.dto.ApiInfo;
+import com.mangofactory.swagger.plugin.EnableSwagger;
+import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,6 +21,7 @@ import java.time.Clock;
 @Configuration
 @EnableAutoConfiguration
 @EnableWebSocket
+@EnableSwagger
 @ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
@@ -35,6 +40,13 @@ public class Application implements WebSocketConfigurer {
     @Bean
     public Clock clock() {
         return Clock.systemUTC();
+    }
+
+    @Bean
+    @Autowired
+    public SwaggerSpringMvcPlugin customImplementation(final SpringSwaggerConfig springSwaggerConfig) {
+        return new SwaggerSpringMvcPlugin(springSwaggerConfig)
+                .includePatterns("/.*");
     }
 
     public static void main(final String[] args) throws Exception {

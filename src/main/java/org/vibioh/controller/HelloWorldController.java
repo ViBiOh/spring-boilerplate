@@ -1,14 +1,15 @@
 package org.vibioh.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.vibioh.model.Hello;
@@ -16,7 +17,7 @@ import org.vibioh.service.DateService;
 
 @RestController
 @RequestMapping("/hello")
-@Api(description = "Ressource that say Hello", tags = {"Hello"})
+@Api("Ressource that say Hello")
 public class HelloWorldController {
     @Value("${app.name}")
     private String appName;
@@ -28,11 +29,9 @@ public class HelloWorldController {
         this.dateService = dateService;
     }
 
-    @RequestMapping("")
+    @RequestMapping(value = "", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    @ApiOperation(
-            value = "Hello with the default name",
-            httpMethod = "GET")
+    @ApiOperation("Hello with the default name")
     @ApiResponses({
             @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
     })
@@ -41,11 +40,9 @@ public class HelloWorldController {
     }
 
 
-    @RequestMapping("{name}")
+    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    @ApiOperation(
-            value = "Hello with the given name",
-            httpMethod = "GET")
+    @ApiOperation("Hello with the given name")
     @ApiResponses({
             @ApiResponse(code = 200, message = "A personalized message with timestamp", response = Hello.class)
     })
