@@ -46,7 +46,16 @@ public class Application implements WebSocketConfigurer {
     @Autowired
     public SwaggerSpringMvcPlugin customImplementation(final SpringSwaggerConfig springSwaggerConfig) {
         return new SwaggerSpringMvcPlugin(springSwaggerConfig)
-                .includePatterns("/.*");
+                .apiInfo(new ApiInfo(
+                        "SpringBoot-web",
+                        null,
+                        null,
+                        "github.com/ViBiOh",
+                        "ISC",
+                        null
+                ))
+                .useDefaultResponseMessages(false)
+                .includePatterns(".*");
     }
 
     public static void main(final String[] args) throws Exception {

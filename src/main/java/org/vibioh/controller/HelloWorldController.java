@@ -7,6 +7,7 @@ import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +17,8 @@ import org.vibioh.model.Hello;
 import org.vibioh.service.DateService;
 
 @RestController
-@RequestMapping("/hello")
-@Api("Ressource that say Hello")
+@RequestMapping(value = "hello", produces = MediaType.APPLICATION_JSON_VALUE)
+@Api(value = "Ressource that say Hello", produces = MediaType.APPLICATION_JSON_VALUE)
 public class HelloWorldController {
     @Value("${app.name}")
     private String appName;
@@ -29,22 +30,22 @@ public class HelloWorldController {
         this.dateService = dateService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
-    @ApiOperation(value = "Default Hello", response = Hello.class)
+    @ApiOperation(value = "Default Hello")
     @ApiResponses({
-            @ApiResponse(code = 200, message = "A greeting message with timestamp")
+            @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
     })
     public Hello hello() {
         return new Hello(appName, dateService.now().toEpochMilli());
     }
 
 
-    @RequestMapping(value = "{name}", method = RequestMethod.GET, produces = RestExceptionHandler.JSON)
+    @RequestMapping(value = "{name}", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(value = "Hello with given name", response = Hello.class)
     @ApiResponses({
-            @ApiResponse(code = 200, message = "A personalized message with timestamp")
+            @ApiResponse(code = 200, message = "A personalized message with timestamp", response = Hello.class)
     })
     public Hello helloName(
             @ApiParam(value = "Name to greet", allowMultiple = false, required = true) final @PathVariable
