@@ -69,6 +69,4 @@ if [ `docker-compose -p ${PROJECT_NAME} ps | awk '{if (NR > 2) {print}}' | wc -l
   docker-compose-deploy ${PROJECT_NAME} ${3}
 else
   docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
-if
-
-
+fi
