@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  montdenis:
+  spring:
     image: vibioh/spring-web-bp
     labels:
       traefik.frontend.passHostHeader: 'true'
