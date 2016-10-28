@@ -69,6 +69,6 @@ if [ `docker-compose -p ${PROJECT_NAME} ps | awk '{if (NR > 2) {print}}' | wc -l
   echo "Deploying new instance"
   docker-compose-deploy ${PROJECT_NAME} ${3}
 else
-  echo "Scaling service ${4}"
+  echo "Hot deploying service ${4}"
   docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
 fi
