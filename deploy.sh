@@ -12,6 +12,7 @@ function readVariableIfRequired() {
 
 function docker-clean() {
   docker rmi `docker images --filter dangling=true -q 2>/dev/null` 2>/dev/null
+  echo $?
 }
 
 function docker-compose-deploy() {
@@ -41,14 +42,20 @@ function docker-compose-hot-deploy() {
   existingContainer=`docker-compose -p ${PROJECT_NAME} ps | grep ${SERVICE_NAME} | awk '{print $1}'`
 
   docker-compose -p ${PROJECT_NAME} pull
+  echo $?
   docker-compose -p ${PROJECT_NAME} scale ${SERVICE_NAME}=2
+  echo $?
 
   echo "Waiting 5 seconds to start..."
   sleep 5
+  echo $?
   docker stop ${existingContainer}
+  echo $?
   docker rm -f -v ${existingContainer}
+  echo $?
   
   docker-clean
+  echo $?
 }
 
 export PATH=${PATH}:/opt/bin
@@ -71,4 +78,5 @@ if [ `docker-compose -p ${PROJECT_NAME} ps | awk '{if (NR > 2) {print}}' | wc -l
 else
   echo "Hot deploying service ${4}"
   docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
+  echo $?
 fi
