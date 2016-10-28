@@ -66,7 +66,9 @@ git clone ${PROJECT_URL} ${PROJECT_NAME}
 cd ${PROJECT_NAME}
 
 if [ `docker-compose -p ${PROJECT_NAME} ps | awk '{if (NR > 2) {print}}' | wc -l` -eq 0 ]; then
+  echo "Deploying new instance"
   docker-compose-deploy ${PROJECT_NAME} ${3}
 else
+  echo "Scaling service ${4}"
   docker-compose-hot-deploy ${PROJECT_NAME} ${3} ${4}
 fi
