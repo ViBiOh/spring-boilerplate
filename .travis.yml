@@ -18,6 +18,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script: |
+    true &&
     docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} &&
     docker push ${DOCKER_USER}/spring-web-bp &&
     ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST} "bash -s" 2>/dev/null -- < ./deploy.sh spring https://github.com/ViBiOh/spring-web-bp.git vibioh.fr
