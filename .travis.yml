@@ -9,10 +9,10 @@ cache:
   - ${HOME}/.m2
 script: |
   mvn clean install docker:build
-after_success:
-  - if [ "${TRAVIS_BRANCH}" == "master" ]; then
-      docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} && docker push ${DOCKER_USER}/spring-web-bp
-    fi
+after_success: |
+  if [ "${TRAVIS_BRANCH}" == "master" ]; then
+    docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} && docker push ${DOCKER_USER}/spring-web-bp
+  fi
 notifications:
   email: false
 before_install:
