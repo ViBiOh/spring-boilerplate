@@ -1,5 +1,5 @@
 FROM vibioh/java:latest
 
-COPY *.jar /app.jar
-
+VOLUME /tmp
 ENTRYPOINT [ "java", "-jar", "/app.jar"]
+COPY *.jar /app.jar
