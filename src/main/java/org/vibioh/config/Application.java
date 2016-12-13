@@ -30,7 +30,7 @@ public class Application implements WebSocketConfigurer {
     @Autowired
     private WebSocketHandler webSocketHandler;
 
-    @Value("${app.basepath}")
+    @Value("${app.basepath:}")
     private String appBasepath;
 
     @Override
