@@ -2,6 +2,7 @@ package org.vibioh.config;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
+import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,7 @@ public class Application implements WebSocketConfigurer {
     }
 
     public ApiPathProvider apiPathProvider(final SpringSwaggerConfig springSwaggerConfig) {
-        final ApiPathProvider apiPathProvider = new ApiPathProvider(appBasepath);
-        apiPathProvider.setDefaultSwaggerPathProvider(springSwaggerConfig.defaultSwaggerPathProvider());
-
-        return apiPathProvider;
+        return new ApiPathProvider(appBasepath, springSwaggerConfig.defaultSwaggerPathProvider());;
     }
 
     public static void main(final String[] args) throws Exception {
