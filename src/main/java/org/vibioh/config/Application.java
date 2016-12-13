@@ -65,7 +65,7 @@ public class Application implements WebSocketConfigurer {
     }
 
     public ApiPathProvider apiPathProvider(final SpringSwaggerConfig springSwaggerConfig) {
-        return new ApiPathProvider(appBasepath, springSwaggerConfig.defaultSwaggerPathProvider());;
+        return new ApiPathProvider(appBasepath, springSwaggerConfig.defaultSwaggerPathProvider());
     }
 
     public static void main(final String[] args) throws Exception {
