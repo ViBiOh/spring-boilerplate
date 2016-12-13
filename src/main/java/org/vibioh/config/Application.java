@@ -6,7 +6,6 @@ import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -29,9 +28,6 @@ import java.time.Clock;
 public class Application implements WebSocketConfigurer {
     @Autowired
     private WebSocketHandler webSocketHandler;
-
-    @Value("${app.basepath:}")
-    private String appBasepath;
 
     @Override
     public void registerWebSocketHandlers(final WebSocketHandlerRegistry webSocketHandlerRegistry) {
@@ -59,13 +55,8 @@ public class Application implements WebSocketConfigurer {
                         "ISC",
                         null
                 ))
-                .pathProvider(apiPathProvider(springSwaggerConfig))
                 .useDefaultResponseMessages(false)
                 .includePatterns(".*");
-    }
-
-    public ApiPathProvider apiPathProvider(final SpringSwaggerConfig springSwaggerConfig) {
-        return new ApiPathProvider(appBasepath, springSwaggerConfig.defaultSwaggerPathProvider());
     }
 
     public static void main(final String[] args) throws Exception {
