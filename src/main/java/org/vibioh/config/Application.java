@@ -28,6 +28,9 @@ public class Application implements WebSocketConfigurer {
     @Autowired
     private WebSocketHandler webSocketHandler;
 
+    @Value("${app.basepath:/}")
+    private String appBasepath;
+
     @Override
     public void registerWebSocketHandlers(final WebSocketHandlerRegistry webSocketHandlerRegistry) {
         webSocketHandlerRegistry.addHandler(webSocketHandler, "/ws/hello");
@@ -54,8 +57,16 @@ public class Application implements WebSocketConfigurer {
                         "ISC",
                         null
                 ))
+                .pathProvider(apiPathProvider(springSwaggerConfig))
                 .useDefaultResponseMessages(false)
                 .includePatterns(".*");
+    }
+
+    public ApiPathProvider apiPathProvider(final SpringSwaggerConfig springSwaggerConfig) {
+        final ApiPathProvider apiPathProvider = new ApiPathProvider(appBasepath);
+        apiPathProvider.setDefaultSwaggerPathProvider(springSwaggerConfig.defaultSwaggerPathProvider());
+
+        return apiPathProvider;
     }
 
     public static void main(final String[] args) throws Exception {
