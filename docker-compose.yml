@@ -5,7 +5,7 @@ services:
     image: vibioh/spring-web-bp
     labels:
       traefik.frontend.passHostHeader: 'true'
-      traefik.frontend.rule: 'Host: spring.${DOMAIN}'
+      traefik.frontend.rule: 'Host: spring.vibioh.fr'
       traefik.port: '8080'
     logging:
       driver: json-file
