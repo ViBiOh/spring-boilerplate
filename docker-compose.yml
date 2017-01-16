@@ -3,6 +3,7 @@ version: '2'
 services:
   spring:
     image: vibioh/spring-web-bp
+    command: -Xmx 256M
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: spring.vibioh.fr, spring.l3miage.fr'
