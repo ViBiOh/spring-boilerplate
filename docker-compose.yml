@@ -3,7 +3,7 @@ version: '2'
 services:
   spring:
     image: vibioh/spring-web-bp
-    command: -Xmx256M
+    command: -Xmx512M
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: spring.vibioh.fr, spring.l3miage.fr'
@@ -15,7 +15,7 @@ services:
     read_only: true
     restart: on-failure:5
     cpu_shares: 128
-    mem_limit: 335544320
+    mem_limit: 536870912
     security_opt:
     - no-new-privileges
 
