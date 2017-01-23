@@ -1,4 +1,4 @@
-FROM vibioh/java:latest
+FROM vibioh/java
 
 VOLUME /tmp
 ENTRYPOINT [ "java", "-jar", "/app.jar"]
