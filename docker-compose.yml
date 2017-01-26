@@ -3,7 +3,6 @@ version: '2'
 services:
   spring:
     image: vibioh/spring-web-bp
-    command: -Xmx512M -XX:MaxPermSize=384M -XX:+CMSClassUnloadingEnabled
     labels:
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: spring.vibioh.fr, spring.l3miage.fr'
