@@ -2,7 +2,6 @@ package org.vibioh.controller;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -13,32 +12,31 @@ import org.vibioh.service.DateService;
 import java.time.Instant;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
 public class HelloWorldControllerTest {
-  private static final long NOEL_2010_20H00 = 1293303600000L;
+    private static final long NOEL_2010_20H00 = 1293303600000L;
 
-  @InjectMocks
-  private HelloWorldController controller;
-  
-  @Mock
-  private DateService dateService;
+    @InjectMocks
+    private HelloWorldController controller;
 
-  @Before
-  public void setUp() throws Exception {
-    MockitoAnnotations.initMocks(this);
-    new FieldSetter(controller, controller.getClass().getDeclaredField("appName")).set("Junit");
+    @Mock
+    private DateService dateService;
 
-    when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
-  }
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        new FieldSetter(controller, controller.getClass().getDeclaredField("appName")).set("Junit");
 
-  @Test
-  public void testHello() throws Exception {
-    final Hello result = controller.hello();
+        when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
+    }
 
-    assertNotNull(result);
-    assertNotNull(result.getName());
-    assertNotNull(result.getMoment());
-  }
+    @Test
+    public void testHello() throws Exception {
+        final Hello result = controller.hello();
+
+        assertNotNull(result);
+        assertNotNull(result.getName());
+        assertNotNull(result.getMoment());
+    }
 }
