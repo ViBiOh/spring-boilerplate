@@ -5,9 +5,11 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import com.wordnik.swagger.annotations.ApiResponse;
 import com.wordnik.swagger.annotations.ApiResponses;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,7 @@ import org.vibioh.service.DateService;
 @RestController
 @RequestMapping(value = "hello", produces = MediaType.APPLICATION_JSON_VALUE)
 @Api(value = "Ressource that say Hello", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "*", allowedHeaders = "Content-Type")
 public class HelloWorldController {
     @Value("${app.name}")
     private String appName;
@@ -36,10 +39,19 @@ public class HelloWorldController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
     })
-    public Hello hello() {
+    public Hello get() {
         return new Hello(appName, dateService.now().toEpochMilli());
     }
 
+    @RequestMapping(value = "", method = RequestMethod.POST)
+    @ResponseBody
+    @ApiOperation(value = "Create Hello")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
+    })
+    public Hello create() {
+        return new Hello(appName, dateService.now().toEpochMilli());
+    }
 
     @RequestMapping(value = "{name}", method = RequestMethod.GET)
     @ResponseBody
@@ -47,7 +59,7 @@ public class HelloWorldController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "A personalized message with timestamp", response = Hello.class)
     })
-    public Hello helloName(
+    public Hello getName(
             @ApiParam(value = "Name to greet", allowMultiple = false, required = true) final @PathVariable
                     String name) {
         return new Hello(name, dateService.now().toEpochMilli());

@@ -33,7 +33,7 @@ public class HelloWorldControllerTest {
 
     @Test
     public void testHello() throws Exception {
-        final Hello result = controller.hello();
+        final Hello result = controller.get();
 
         assertNotNull(result);
         assertNotNull(result.getName());
