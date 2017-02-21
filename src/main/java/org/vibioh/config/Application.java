@@ -14,37 +14,16 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.web.socket.WebSocketHandler;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 
 import java.time.Clock;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableWebSocket
 @EnableWebSecurity
 @EnableSwagger
 @ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
-public class Application implements WebSocketConfigurer {
-    private final WebSocketHandler webSocketHandler;
-
-    @Autowired
-    public Application(final WebSocketHandler webSocketHandler) {
-        this.webSocketHandler = webSocketHandler;
-    }
-
-    @Override
-    public void registerWebSocketHandlers(final WebSocketHandlerRegistry webSocketHandlerRegistry) {
-        webSocketHandlerRegistry.addHandler(webSocketHandler, "/ws/hello");
-
-        webSocketHandlerRegistry
-                .addHandler(webSocketHandler, "/ws/hello")
-                .withSockJS();
-    }
-
+public class Application {
     @Bean
     public Clock clock() {
         return Clock.systemUTC();
