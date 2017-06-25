@@ -4,6 +4,7 @@ services:
   spring:
     image: vibioh/spring-web-bp
     labels:
+      traefik.backend.healthcheck.path: '/health'
       traefik.frontend.passHostHeader: 'true'
       traefik.frontend.rule: 'Host: spring.vibioh.fr, spring.l3miage.fr'
       traefik.port: '8080'
