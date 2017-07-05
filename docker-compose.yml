@@ -14,7 +14,7 @@ services:
     read_only: true
     restart: on-failure:5
     cpu_shares: 128
-    mem_limit: 134217728
+    mem_limit: 268435456
     security_opt:
     - no-new-privileges
 
