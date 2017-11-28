@@ -44,16 +44,6 @@ public class HelloWorldController {
         return new Hello(appName, dateService.now().toEpochMilli());
     }
 
-    @PostMapping
-    @ResponseBody
-    @ApiOperation(value = "Create Hello")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "A greeting message with timestamp", response = Hello.class)
-    })
-    public Hello create() {
-        return new Hello(appName, dateService.now().toEpochMilli());
-    }
-
     @GetMapping("{name}")
     @ResponseBody
     @ApiOperation(value = "Hello with given name", response = Hello.class)

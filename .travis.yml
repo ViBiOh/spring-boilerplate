@@ -5,7 +5,8 @@ jdk:
 services:
 - docker
 script: |
-  mvn clean install docker:build
+  mvn clean install &&
+  docker build -t ${DOCKER_USER}/spring-web-bp .
 after_success: |
   if [ "${TRAVIS_BRANCH}" == "master" ]; then
     docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} && docker push ${DOCKER_USER}/spring-web-bp
