@@ -38,7 +38,7 @@ public class Application implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(final WebSocketHandlerRegistry registry) {
-        registry.addHandler(this.echoWebsocketHandler, "/echo").withSockJS();
+        registry.addHandler(this.echoWebsocketHandler, "/echo");
     }
 
     @Bean
