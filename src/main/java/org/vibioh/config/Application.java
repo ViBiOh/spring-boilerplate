@@ -29,12 +29,8 @@ import java.time.Clock;
 @ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
-    private final WebSocketHandler echoWebsocketHandler;
-
     @Autowired
-    public Application(final WebSocketHandler webSocketHandler) {
-        this.echoWebsocketHandler = webSocketHandler;
-    }
+    private WebSocketHandler echoWebsocketHandler;
 
     @Override
     public void registerWebSocketHandlers(final WebSocketHandlerRegistry registry) {
@@ -49,7 +45,8 @@ public class Application implements WebSocketConfigurer {
     @Bean
     public WebSecurityConfigurerAdapter securityConfigurer() {
         return new WebSecurityConfigurerAdapter() {
-            @Override protected void configure(final HttpSecurity http) throws Exception {
+            @Override
+            protected void configure(final HttpSecurity http) throws Exception {
                 http.authorizeRequests().anyRequest().permitAll();
             }
         };
