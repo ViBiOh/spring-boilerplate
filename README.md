@@ -20,19 +20,6 @@ docker run \
   maven:3-jdk-8-alpine mvn clean install
 ```
 
-### Docker image
-
-```bash
-docker run \
-  -it \
-  --rm \
-  --name spring_web_bp \
-  -v `pwd`:/usr/src/spring_web_bp \
-  -w /usr/src/spring_web \
-  -v /var/run/docker.sock:/var/run/docker.sock:ro \
-  maven:3-jdk-8-alpine mvn docker:build
-```
-
 ## Running
 
 ```bash
