@@ -19,7 +19,6 @@ public class EchoWebsocket implements WebSocketHandler {
     @Override
     public void handleMessage(final WebSocketSession webSocketSession, final WebSocketMessage<?> webSocketMessage)
             throws Exception {
-        logger.info("handleMessage : " + webSocketMessage.getPayload());
         webSocketSession.sendMessage(webSocketMessage);
     }
 
