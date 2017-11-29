@@ -1,16 +1,14 @@
-package org.vibioh.config;
+package org.vibioh;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -21,12 +19,10 @@ import org.springframework.web.socket.WebSocketHandler;
 
 import java.time.Clock;
 
-@Configuration
-@EnableAutoConfiguration
+@SpringBootApplication
 @EnableWebSecurity
 @EnableWebSocket
 @EnableSwagger
-@ComponentScan(value = "org.vibioh")
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
     @Autowired
