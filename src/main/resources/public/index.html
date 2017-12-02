@@ -6,5 +6,67 @@
 <body>
   <h1>SpringBoot</h1>
   <p>Hello World!</p>
-  <a href="/doc/index.html">Browse API documentation</a>
+  <p>
+    <a href="/doc/index.html">Browse API documentation</a>
+  <p>
+
+  <fieldset>
+    <legend>WebSocket tester</legend>
+    <button type="button" id="toggle" onclick="toggleWebSocket();" style="width: 120px;">Open Websocket</button>
+    <input id="message" type="text" value="Hello World!" placeholder="Sent message" disabled>
+    <button id="send" type="button" onclick="sendMessage();" disabled>Send</button>
+    <p id="output"></p>
+  </fieldset>
+
+  <script type="text/javascript">
+    var toggler = document.getElementById('toggle');
+    var input = document.getElementById('message');
+    var output = document.getElementById('output');
+    var sender = document.getElementById('send');
+    var ws = null;
+
+    function addOutput(content, color) {
+      var node = document.createElement('span');
+      node.style = 'display:block;color:' + color;
+      node.innerHTML = content;
+
+      output.appendChild(node);
+    }
+
+    function toggleWebSocket() {
+      if (ws) {
+        ws.close();
+        toggler.innerHTML = 'Open Websocket';
+        ws = null;
+
+        return;
+      }
+
+      ws = new WebSocket('wss://spring.l3miage.fr/echo');
+
+      ws.onopen = function () {
+        toggler.innerHTML = 'Close Websocket';
+        input.disabled = sender.disabled = false;
+        addOutput('Connection established', 'blue')
+      };
+
+      ws.onclose = function () {
+        input.disabled = sender.disabled = true;
+        addOutput('Connection closed', 'red')
+      }
+
+      ws.onmessage = function(content) {
+        addOutput('Received: ' + content.data, 'green');
+      }
+    }
+
+    function sendMessage() {
+      if (ws) {
+        var content = input.value;
+
+        addOutput('Sent: ' + content, 'black')
+        ws.send(content);
+      }
+    }
+  </script>
 </body>
