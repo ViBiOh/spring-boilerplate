@@ -11,6 +11,7 @@ import org.vibioh.service.DateService;
 
 import java.time.Instant;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +38,6 @@ public class HelloWorldControllerTest {
 
         assertNotNull(result);
         assertNotNull(result.getName());
-        assertNotNull(result.getMoment());
+        assertNotEquals(result.getMoment(), 0);
     }
 }

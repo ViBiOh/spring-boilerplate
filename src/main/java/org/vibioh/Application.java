@@ -25,12 +25,16 @@ import java.time.Clock;
 @EnableSwagger
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
-    @Autowired
     private WebSocketHandler echoWebsocketHandler;
+
+    @Autowired
+    public Application(final WebSocketHandler echoWebsocketHandler) {
+        this.echoWebsocketHandler = echoWebsocketHandler;
+    }
 
     @Override
     public void registerWebSocketHandlers(final WebSocketHandlerRegistry registry) {
-        registry.addHandler(this.echoWebsocketHandler, "/echo");
+        registry.addHandler(this.echoWebsocketHandler, "/echo").setAllowedOrigins("*");
     }
 
     @Bean
