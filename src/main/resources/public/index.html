@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="content-language" content="fr">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SpringBoot Index</title>
 </head>
 <body>
@@ -12,14 +17,17 @@
 
   <fieldset>
     <legend>WebSocket tester</legend>
-    <button type="button" id="toggle" onclick="toggleWebSocket();" style="width: 120px;">Open Websocket</button>
-    <input id="message" type="text" value="Hello World!" placeholder="Sent message" disabled>
-    <button id="send" type="button" onclick="sendMessage();" disabled>Send</button>
+    <input id="url" type="text" value="wss://spring.l3miage.fr/echo" style="width: 200px;" placeholder="WebSocket Endpoint">
+    <button type="button" id="toggle" onclick="toggleWebSocket();" style="width: 60px;">Open</button>
+    <br />
+    <input id="message" type="text" value="Hello World!" style="width: 200px;" placeholder="Sent message" disabled>
+    <button id="send" type="button" onclick="sendMessage();" style="width: 60px;" disabled>Send</button>
     <p id="output"></p>
   </fieldset>
 
   <script type="text/javascript">
     var toggler = document.getElementById('toggle');
+    var url = document.getElementById('url');
     var input = document.getElementById('message');
     var output = document.getElementById('output');
     var sender = document.getElementById('send');
@@ -36,22 +44,24 @@
     function toggleWebSocket() {
       if (ws) {
         ws.close();
-        toggler.innerHTML = 'Open Websocket';
+        toggler.innerHTML = 'Open';
         ws = null;
 
         return;
       }
 
-      ws = new WebSocket('wss://spring.l3miage.fr/echo');
+      ws = new WebSocket(url.value);
 
       ws.onopen = function () {
-        toggler.innerHTML = 'Close Websocket';
+        toggler.innerHTML = 'Close';
         input.disabled = sender.disabled = false;
+        url.disabled = true;
         addOutput('Connection established', 'blue')
       };
 
       ws.onclose = function () {
         input.disabled = sender.disabled = true;
+        url.disabled = false;
         addOutput('Connection closed', 'red')
       }
 
