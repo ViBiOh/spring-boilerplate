@@ -1,8 +1,6 @@
 # spring-web-bp
 
-[![Build Status](https://travis-ci.org/ViBiOh/spring-web-bp.svg?branch=master)](https://travis-ci.org/ViBiOh/spring-web-bp)
-
-[SonarCloud Report](https://sonarcloud.io/dashboard?id=spring-web-bp%3Aspring-web-bp)
+[![Build Status](https://travis-ci.org/ViBiOh/spring-web-bp.svg?branch=master)](https://travis-ci.org/ViBiOh/spring-web-bp) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=spring-web-bp:spring-web-bp)](https://sonarcloud.io/dashboard/index/spring-web-bp:spring-web-bp)
 
 ## Building
 
