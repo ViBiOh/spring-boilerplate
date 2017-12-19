@@ -15,7 +15,6 @@
         <compiler-plugin.version>3.5.1</compiler-plugin.version>
 
         <spring-boot.version>1.5.7.RELEASE</spring-boot.version>
-        <swagger.version>1.0.2</swagger.version>
 
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
