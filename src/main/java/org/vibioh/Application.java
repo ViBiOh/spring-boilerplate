@@ -1,9 +1,5 @@
 package org.vibioh;
 
-import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
-import com.mangofactory.swagger.models.dto.ApiInfo;
-import com.mangofactory.swagger.plugin.EnableSwagger;
-import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +18,6 @@ import java.time.Clock;
 @SpringBootApplication
 @EnableWebSecurity
 @EnableWebSocket
-@EnableSwagger
 @PropertySource("classpath:application.properties")
 public class Application implements WebSocketConfigurer {
     private WebSocketHandler echoWebsocketHandler;
@@ -50,22 +45,6 @@ public class Application implements WebSocketConfigurer {
                 http.authorizeRequests().anyRequest().permitAll();
             }
         };
-    }
-
-    @Bean
-    @Autowired
-    public SwaggerSpringMvcPlugin customImplementation(final SpringSwaggerConfig springSwaggerConfig) {
-        return new SwaggerSpringMvcPlugin(springSwaggerConfig)
-                .apiInfo(new ApiInfo(
-                        "SpringBoot-web",
-                        null,
-                        null,
-                        "github.com/ViBiOh",
-                        "ISC",
-                        null
-                ))
-                .useDefaultResponseMessages(false)
-                .includePatterns(".*");
     }
 
     public static void main(final String[] args) {

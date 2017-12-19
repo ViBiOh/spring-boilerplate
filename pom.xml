@@ -44,13 +44,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- Swagger -->
-        <dependency>
-            <groupId>com.mangofactory</groupId>
-            <artifactId>swagger-springmvc</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
