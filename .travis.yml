@@ -16,21 +16,22 @@ jobs:
       docker build -t ${DOCKER_USER}/spring-web-bp .
     after_success: |
       if [ "${TRAVIS_BRANCH}" == "master" ]; then
-        docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} && docker push ${DOCKER_USER}/spring-web-bp
+        docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} \
+            && docker push ${DOCKER_USER}/spring-web-bp
       fi
 
-  - stage: Deploy
+  # - stage: Deploy
 
-    script: skip
-    deploy:
-      provider: script
-      skip_cleanup: true
-      script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/deploy/spring/ --data-binary @docker-compose.yml"
+  #   script: skip
+  #   deploy:
+  #     provider: script
+  #     skip_cleanup: true
+  #     script: "curl -H 'Authorization: GitHub ${GITHUB_OAUTH_TOKEN}' -X POST https://dashboard-api.vibioh.fr/deploy/spring/ --data-binary @docker-compose.yml"
 
 stages:
   - Build
-  - name: Deploy
-    if: branch = master
+  # - name: Deploy
+  #   if: branch = master
 
 notifications:
   email: false
