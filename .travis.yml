@@ -13,11 +13,11 @@ jobs:
           secure: "GBx9dzNoATXXhGsRjsJ0cHCuJPqL5Yqgnwek6ge247RHaygAalHH9JCuLGxFFS7cn4AxOVGJL548X3AU15aGmHNt6hu6B67JATm44KNbFKwgZnJiHz2ZW0w5kYzFv9ehbygNyspqHxcKrUc3CaeiV7W/IAYKyKzmUe0c82Fw2R7CIyFvQ7Cy2gpKLwGwB0THuF6IgJzB/ztSid/niovUm40rU842BqgXmK0r30OSESYHjcPv14+ker4r7mnSWwIjTmf0z0516d3CON7h0xFtFfsJ0R3GFkE6IZM+Skzppn+uenWLsEJCBPE9UYD453VWaZvw0CMiF698LR4fYw8vrEKCXQQ678fsDPId5FjdkUx9qj0MbKHT3+VNdwjZ0Zw0SnzAhdwYXVsTXJpIX9pIgVBdeU5iQAmpsxx43fVh1oSgVeX6A/h6hDJChvtr5YIYBxkrf76iq25jnIkuJr31OY6VhXlR7eg0GQlqCwjYbNjMbg7jqyN5/wwl0XrBA7Cp1XVoysnQEpnTT/p361ZjLZ5E97n/OaR5AAJ1lwQFSP5hhVdgLpcX5XRxQxTLRlOMCNjIUBgtrvUj8KFiMk48cvDOs1eX5UnbHS+MzGsta2ZB8MeJF83YchxCxEhXA1jXjbo5xaUHEYDk4PUGVAG2ypsLGmiONjX3tkiApv55rFg="
     script: |
       mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar &&
-      docker build -t ${DOCKER_USER}/spring-web-bp .
+      docker build -t vibioh/spring-web-bp .
     after_success: |
       if [ "${TRAVIS_BRANCH}" == "master" ]; then
-        docker login -u=${DOCKER_USER} -p=${DOCKER_PASS} \
-            && docker push ${DOCKER_USER}/spring-web-bp
+        docker login -u=vibioh -p=${DOCKER_PASS} \
+            && docker push vibioh/spring-web-bp
       fi
 
   # - stage: Deploy
