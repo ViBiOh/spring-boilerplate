@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:11-slim
 
 HEALTHCHECK --retries=10 CMD wget -qO- http://localhost:8080/health
 VOLUME /tmp
