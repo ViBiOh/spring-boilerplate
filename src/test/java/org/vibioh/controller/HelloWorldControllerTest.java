@@ -27,7 +27,6 @@ public class HelloWorldControllerTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        new FieldSetter(controller, controller.getClass().getDeclaredField("appName")).set("Junit");
 
         when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
     }
@@ -37,7 +36,6 @@ public class HelloWorldControllerTest {
         final Hello result = controller.get();
 
         assertNotNull(result);
-        assertNotNull(result.getName());
         assertNotEquals(result.getMoment(), 0);
     }
 }

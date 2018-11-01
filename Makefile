@@ -11,7 +11,7 @@ docker-build:
 		--name spring_web_bp \
 		-v `pwd`:/usr/src/spring_web_bp \
 		-w /usr/src/spring_web_bp \
-		maven:3-jdk-8-alpine mvn clean install
+		maven:3-jdk-11-slim mvn clean install
 
 docker-start:
 	docker run \
@@ -21,6 +21,6 @@ docker-start:
 		-p 8080:8080/tcp \
 		-v `pwd`:/usr/src/spring_web_bp \
 		-w /usr/src/spring_web_bp \
-		maven:3-jdk-8-alpine mvn spring-boot:run
+		maven:3-jdk-11-slim mvn spring-boot:run
 
 .PHONY: build start docker-build docker-start

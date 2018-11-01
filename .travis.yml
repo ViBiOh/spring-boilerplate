@@ -20,18 +20,18 @@ jobs:
             && docker push vibioh/spring-web-bp
       fi
 
-  # - stage: Deploy
+  - stage: Deploy
 
-  #   script: skip
-  #   deploy:
-  #     provider: script
-  #     skip_cleanup: true
-  #     script: 'curl -H "Authorization: GitHub ${GITHUB_OAUTH_TOKEN}" -X POST https://dashboard-api.vibioh.fr/deploy/spring/ --data-binary @docker-compose.yml'
+    script: skip
+    deploy:
+      provider: script
+      skip_cleanup: true
+      script: 'curl -H "Authorization: GitHub ${GITHUB_OAUTH_TOKEN}" -X POST https://dashboard-api.vibioh.fr/deploy/spring/ --data-binary @docker-compose.yml'
 
 stages:
   - Build
-  # - name: Deploy
-  #   if: branch = master
+  - name: Deploy
+    if: branch = master
 
 notifications:
   email: false
