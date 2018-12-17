@@ -8,30 +8,13 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
-import org.springframework.web.socket.WebSocketHandler;
 
 import java.time.Clock;
 
 @SpringBootApplication
 @EnableWebSecurity
-@EnableWebSocket
 @PropertySource("classpath:application.properties")
-public class Application implements WebSocketConfigurer {
-    private WebSocketHandler echoWebsocketHandler;
-
-    @Autowired
-    public Application(final WebSocketHandler echoWebsocketHandler) {
-        this.echoWebsocketHandler = echoWebsocketHandler;
-    }
-
-    @Override
-    public void registerWebSocketHandlers(final WebSocketHandlerRegistry registry) {
-        registry.addHandler(this.echoWebsocketHandler, "/echo").setAllowedOrigins("*");
-    }
-
+public class Application {
     @Bean
     public Clock clock() {
         return Clock.systemUTC();
