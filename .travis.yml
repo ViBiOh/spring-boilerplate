@@ -28,7 +28,7 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: 'curl -X POST -u "${DEPLOY_CREDENTIALS}" "https://deploy.vibioh.fr/?project=spring&version=${TRAVIS_COMMIT}" --data-binary @docker-compose.yml'
+      script: 'curl -X POST -u "${DEPLOY_CREDENTIALS}" "https://deploy.vibioh.fr/spring/${TRAVIS_COMMIT}" --data-binary @docker-compose.yml'
 
 stages:
   - Build
