@@ -1,9 +1,12 @@
+.PHONY: build
 build:
 	mvn clean install
 
+.PHONY: start
 start:
 	mvn spring-boot:run
 
+.PHONY: docker-build
 docker-build:
 	docker run \
 		-it \
@@ -13,6 +16,7 @@ docker-build:
 		-w /usr/src/spring_web_bp \
 		maven:3-jdk-11-slim mvn clean install
 
+.PHONY: docker-start
 docker-start:
 	docker run \
 		-it \
@@ -22,5 +26,3 @@ docker-start:
 		-v $(pwd):/usr/src/spring_web_bp \
 		-w /usr/src/spring_web_bp \
 		maven:3-jdk-11-slim mvn spring-boot:run
-
-.PHONY: build start docker-build docker-start
