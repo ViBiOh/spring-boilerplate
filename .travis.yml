@@ -28,7 +28,7 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: bash script/deploy spring "${TRAVIS_COMMIT}" "@docker-compose.yml"
+      script: bash script/deploy spring "@docker-compose.yml"
 
 stages:
   - Build
