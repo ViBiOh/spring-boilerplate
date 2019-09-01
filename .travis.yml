@@ -33,7 +33,7 @@ jobs:
 stages:
   - Build
   - name: Deploy
-    if: branch = master
+    if: branch = master && type = push
 
 notifications:
   email: false
