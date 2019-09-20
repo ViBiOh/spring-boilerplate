@@ -11,7 +11,7 @@ services:
       traefik.http.routers.spring-https.entrypoints: https
       traefik.http.routers.spring-https.middlewares: compress@file, web-limit@file
       traefik.http.routers.spring-https.tls: true
-      traefik.http.routers.spring-https.tls.certResolver: default
+      traefik.http.routers.spring-https.tls.certresolver: default
       traefik.http.services.spring-service.loadbalancer.passhostheader: true
       traefik.http.services.spring-service.loadbalancer.server.port: '8080'
     read_only: true
