@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 services:
   spring:
@@ -12,7 +12,7 @@ services:
       traefik.http.routers.spring-https.middlewares: compress@file, web-limit@file
       traefik.http.routers.spring-https.tls: true
       traefik.http.routers.spring-https.tls.certresolver: default
-      traefik.http.services.spring-service.loadbalancer.server.port: '8080'
+      traefik.http.services.spring-service.loadbalancer.server.port: "8080"
     read_only: true
     restart: on-failure:5
     cpu_shares: 128
