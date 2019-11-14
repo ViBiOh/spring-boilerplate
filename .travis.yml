@@ -24,16 +24,15 @@ jobs:
 
   - stage: Deploy
 
-    script: skip
-    deploy:
-      provider: script
-      skip_cleanup: true
-      script: bash script/deploy spring "@docker-compose.yml"
+    language: minimal
+    script:
+    - curl -q -sSL --max-time 10 "https://raw.githubusercontent.com/ViBiOh/scripts/master/bootstrap" | bash -s "deploy"
+    - scripts/deploy "spring" "@docker-compose.yml"
 
 stages:
   - Build
   - name: Deploy
-    if: branch = master && type = push
+    if: false
 
 notifications:
   email: false
