@@ -33,7 +33,6 @@ jobs:
 stages:
   - Build
   - name: Deploy
-    if: false
 
 notifications:
   email: false
