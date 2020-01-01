@@ -4,7 +4,7 @@ version: "2"
 
 services:
   spring:
-    image: vibioh/spring-web-bp
+    image: ${DOCKER_USER}/spring-web-bp
     labels:
       traefik.http.routers.spring-http.rule: Host(`spring.l3miage.fr`)
       traefik.http.routers.spring-http.entrypoints: http
