@@ -31,7 +31,8 @@ jobs:
 
 stages:
   - Build
-  - Deploy
+  - name: Deploy
+    if: branch = master && type = push
 
 notifications:
   email: false
