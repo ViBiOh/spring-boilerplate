@@ -6,7 +6,6 @@ jobs:
 
       language: java
       jdk: openjdk11
-      sudo: required
       services:
         - docker
       addons:
