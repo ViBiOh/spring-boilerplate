@@ -15,7 +15,7 @@ jobs:
       script: |
         mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar &&
         docker build -t "${DOCKER_USER}/spring-web-bp" .
-      after_success: |
+      after_success:
         - echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin
         - docker push "${DOCKER_USER}/spring-web-bp"
 
