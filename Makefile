@@ -5,10 +5,28 @@ ifneq ("$(wildcard .env)","")
 	export
 endif
 
+APP_NAME = spring-web-bp
+
+.DEFAULT_GOAL := app
+
 ## help: Display list of commands
 .PHONY: help
 help: Makefile
 	@sed -n 's|^##||p' $< | column -t -s ':' | sort
+
+## name: Output app name
+.PHONY: name
+name:
+	@printf "$(APP_NAME)"
+
+## version: Output last commit sha1
+.PHONY: version
+version:
+	@printf "$(shell git rev-parse --short HEAD)"
+
+## app: Build whole app
+.PHONY: app
+app: init build
 
 ## init: Bootstrap your application. e.g. fetch some data files, make some API calls, request user input etc...
 .PHONY: init
