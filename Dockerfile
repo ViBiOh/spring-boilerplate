@@ -1,6 +1,6 @@
 FROM openjdk:15-slim
 
-HEALTHCHECK --retries=10 CMD curl -q -sSL --max-time 30 http://localhost:8080/actuator/health
+HEALTHCHECK --retries=10 CMD curl --disable --silent --show-error --location --max-time 30 http://localhost:8080/actuator/health
 VOLUME /tmp
 ENTRYPOINT [ "java", "-Xmx128m", "-Xss256k", "-jar", "/app.jar"]
 
