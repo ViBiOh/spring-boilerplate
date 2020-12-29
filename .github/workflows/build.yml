@@ -18,7 +18,8 @@ defaults:
 
 jobs:
   build:
-    name: java
+    name: Java
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,10 +40,10 @@ jobs:
           docker push "${{ secrets.DOCKER_USER }}/$(make name):$(make version)"
 
   publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && !contains(toJSON(github.event.commits.*.message), '[skip-ci]')
     name: Publish
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
     steps:
       - uses: actions/checkout@v2
       - name: Publish
