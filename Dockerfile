@@ -1,4 +1,4 @@
-FROM openjdk:15-slim
+FROM openjdk:16-slim
 
 HEALTHCHECK --retries=10 CMD curl --disable --silent --show-error --location --max-time 30 http://localhost:8080/actuator/health
 VOLUME /tmp
