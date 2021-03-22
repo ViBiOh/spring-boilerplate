@@ -32,14 +32,11 @@ spec:
       - spring.l3miage.fr
     port: 8080
     prometheus: null
-
     livenessProbePath: /actuator/health
     readinessProbePath: /actuator/health
-
     securityContext:
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
-
     resources:
     limits:
       memory: 256Mi
