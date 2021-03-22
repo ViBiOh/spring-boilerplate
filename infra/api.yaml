@@ -40,6 +40,8 @@ spec:
       readiness: /actuator/health
     securityContext:
       runAsNonRoot: false
+    autoscaling:
+      enabled: false
     resources:
       limits:
         memory: 256Mi
