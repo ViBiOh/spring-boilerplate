@@ -30,6 +30,8 @@ spec:
       enabled: true
       hosts:
       - spring.l3miage.fr
+    livenessProbePath: /actuator/health
+    readinessProbePath: /actuator/health
     securityContext:
       allowPrivilegeEscalation: false
       readOnlyRootFilesystem: true
