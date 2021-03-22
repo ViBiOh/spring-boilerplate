@@ -35,7 +35,7 @@ spec:
       port: 8080
       path: /actuator/prometheus
     probes:
-      initialDelaySeconds: 30
+      initialDelaySeconds: 15
       liveness: /actuator/health
       readiness: /actuator/health
     securityContext:
