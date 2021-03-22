@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.59"
+      version: "0.0.60"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -31,14 +31,19 @@ spec:
       hosts:
       - spring.l3miage.fr
     port: 8080
-    prometheus: null
+    prometheus:
+      port: 8080
+      path: /actuator/prometheus
     livenessProbePath: /actuator/health
     readinessProbePath: /actuator/health
     securityContext:
       runAsNonRoot: false
     resources:
-    limits:
-      memory: 256Mi
-    requests:
-      cpu: 200m
-      memory: 256Mi
+      limits:
+        memory: 256Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+    canary:
+      enabled: true
+      url: https://spring.l3miage.fr
