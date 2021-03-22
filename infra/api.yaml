@@ -25,7 +25,7 @@ spec:
     nameOverride: spring-web-bp
     image:
       name: vibioh/spring-web-bp
-      tag: "202103221740" # {"$imagepolicy": "default:flux-spring-web-bp-api:tag"}
+      tag: "202103221847" # {"$imagepolicy": "default:flux-spring-web-bp-api:tag"}
     ingress:
       enabled: true
       hosts:
