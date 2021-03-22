@@ -29,7 +29,10 @@ spec:
     ingress:
       enabled: true
       hosts:
-      - spring.l3miage.fr
+        - spring.l3miage.fr
+    securityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
     resources:
     limits:
       memory: 256Mi
