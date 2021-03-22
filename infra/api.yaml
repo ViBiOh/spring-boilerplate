@@ -46,6 +46,3 @@ spec:
       requests:
         cpu: 200m
         memory: 256Mi
-    canary:
-      enabled: true
-      url: https://spring.l3miage.fr
