@@ -35,8 +35,7 @@ spec:
     livenessProbePath: /actuator/health
     readinessProbePath: /actuator/health
     securityContext:
-      allowPrivilegeEscalation: false
-      readOnlyRootFilesystem: true
+      runAsNonRoot: false
     resources:
     limits:
       memory: 256Mi
