@@ -20,12 +20,8 @@ public class HelloWorldController {
     @Value("${app.name}")
     private String appName;
 
-    private final DateService dateService;
-
     @Autowired
-    public HelloWorldController(final DateService dateService) {
-        this.dateService = dateService;
-    }
+    private DateService dateService;
 
     @GetMapping
     @ResponseBody

@@ -26,12 +26,12 @@ public class HelloWorldControllerTest {
     private DateService dateService;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
     }
 
     @Test
-    public void testHello() throws Exception {
+    public void testHello() {
         final Hello result = controller.get();
 
         assertNotNull(result);

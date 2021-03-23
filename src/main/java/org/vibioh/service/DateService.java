@@ -8,14 +8,10 @@ import java.time.Instant;
 
 @Service
 public class DateService {
-    private final Clock clock;
-
     @Autowired
-    public DateService(final Clock clock) {
-        this.clock = clock;
-    }
+    private Clock clock;
 
     public Instant now() {
-        return Instant.now(this.clock);
+        return Instant.now(clock);
     }
 }
