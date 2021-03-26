@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: app
-      version: "0.0.61"
+      version: "0.0.62"
       sourceRef:
         kind: HelmRepository
         name: vibioh
@@ -32,9 +32,10 @@ spec:
       - spring.l3miage.fr
     port: 8080
     prometheus:
-      port: 8080
+      port: 8888
       path: /actuator/prometheus
     probes:
+      port: 8888
       initialDelaySeconds: 15
       liveness: /actuator/health
       readiness: /actuator/health
