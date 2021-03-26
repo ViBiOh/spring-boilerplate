@@ -32,10 +32,10 @@ spec:
       - spring.l3miage.fr
     port: 8080
     prometheus:
-      port: 8888
+      port: 8080
       path: /actuator/prometheus
     probes:
-      port: 8888
+      port: 8080
       initialDelaySeconds: 15
       liveness: /actuator/health
       readiness: /actuator/health
