@@ -29,7 +29,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-      - spring.l3miage.fr
+        - spring.l3miage.fr
     port: 8080
     prometheus:
       port: 8080
@@ -45,5 +45,4 @@ spec:
       limits:
         memory: 256Mi
       requests:
-        cpu: 200m
-        memory: 256Mi
+        memory: 128Mi
