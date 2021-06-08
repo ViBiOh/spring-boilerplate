@@ -37,8 +37,6 @@ spec:
     probes:
       initialDelaySeconds: 15
       readiness: /actuator/health
-    securityContext:
-      runAsNonRoot: false
     autoscaling:
       enabled: false
     resources:
