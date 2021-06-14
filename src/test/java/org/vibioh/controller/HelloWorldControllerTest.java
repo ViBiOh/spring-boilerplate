@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class HelloWorldControllerTest {
+class HelloWorldControllerTest {
     private static final long NOEL_2010_20H00 = 1293303600000L;
 
     @InjectMocks
@@ -31,10 +31,10 @@ public class HelloWorldControllerTest {
     }
 
     @Test
-    public void testHello() {
+    void testHello() {
         final Hello result = controller.get();
 
         assertNotNull(result);
-        assertNotEquals(result.getMoment(), 0);
+        assertNotEquals(0, result.getMoment());
     }
 }

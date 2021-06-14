@@ -15,7 +15,7 @@ import org.vibioh.service.DateService;
 
 @RestController
 @RequestMapping(value = "hello", produces = MediaType.APPLICATION_JSON_VALUE)
-@CrossOrigin(origins = {"*"}, allowedHeaders = {"Content-Type"}, methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = {"*"}, allowedHeaders = {"Content-Type"}, methods = {RequestMethod.GET})
 public class HelloWorldController {
     @Value("${app.name}")
     private String appName;
