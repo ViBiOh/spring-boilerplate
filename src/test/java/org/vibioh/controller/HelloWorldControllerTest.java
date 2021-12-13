@@ -35,6 +35,6 @@ class HelloWorldControllerTest {
         final Hello result = controller.get();
 
         assertNotNull(result);
-        assertNotEquals(0, result.getMoment());
+        assertNotEquals(0, result.moment());
     }
 }
