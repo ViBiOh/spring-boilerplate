@@ -25,11 +25,11 @@ spec:
     nameOverride: spring-web-bp
     image:
       name: vibioh/spring-web-bp
-      tag: "202202041453" # {"$imagepolicy": "default:flux-spring-web-bp-api:tag"}
+      tag: "202202180800" # {"$imagepolicy": "default:flux-spring-web-bp-api:tag"}
     ingress:
       enabled: true
       hosts:
-        - spring.l3miage.fr
+      - spring.l3miage.fr
     port: 8080
     prometheus:
       port: 8080
