@@ -21,7 +21,7 @@ public class Application {
 
     @Bean
     public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeHttpRequests().anyRequest().permitAll();
         return http.build();
     }
 

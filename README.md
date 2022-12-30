@@ -18,7 +18,7 @@ docker run \
   --name spring_web_bp \
   -v `pwd`:/usr/src/spring_web_bp \
   -w /usr/src/spring_web_bp \
-  maven:3-jdk-11-alpine mvn clean install
+  maven:3-openjdk-18-slim mvn clean install
 ```
 
 ## Running
@@ -37,7 +37,7 @@ docker run \
   -p 8080:8080/tcp \
   -v `pwd`:/usr/src/spring_web_bp \
   -w /usr/src/spring_web_bp \
-  maven:3-jdk-11-alpine mvn spring-boot:run
+  maven:3-openjdk-18-slim mvn spring-boot:run
 ```
 
 ### Docker image
