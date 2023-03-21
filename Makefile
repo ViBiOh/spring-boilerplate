@@ -51,20 +51,22 @@ run:
 .PHONY: docker-build
 docker-build:
 	docker run \
-		-it \
+		--interactive \
+		--tty \
 		--rm \
 		--name spring_web_bp \
-		-v "$(pwd):/usr/src/app" \
-		-w /usr/src/app \
-		maven:3-jdk-11-slim mvn clean install
+		--volume "${PWD}:/usr/src/app" \
+		--workdir /usr/src/app \
+		"maven:3-openjdk-18-slim" mvn clean install
 
 .PHONY: docker-run
 docker-run:
 	docker run \
-		-it \
+		--interactive \
+		--tty \
 		--rm \
 		--name spring_web_bp \
-		-p 8080:8080/tcp \
-		-v "$(pwd):/usr/src/app" \
-		-w /usr/src/app \
-		maven:3-jdk-11-slim mvn spring-boot:run
+		--publish 8080:8080/tcp \
+		--volume "${PWD}:/usr/src/app" \
+		--workdir /usr/src/app \
+		"maven:3-openjdk-18-slim" mvn spring-boot:run
