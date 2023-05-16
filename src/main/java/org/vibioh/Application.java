@@ -1,42 +1,41 @@
 package org.vibioh;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
+import org.vibioh.controller.Greeter;
+import org.vibioh.model.Hello;
 
-import java.time.Clock;
+import java.util.Locale;
+
+import static java.time.format.DateTimeFormatter.ISO_INSTANT;
+
 
 @SpringBootApplication
-@EnableWebSecurity
-@PropertySource("classpath:application.properties")
-public class Application {
-    @Bean
-    public Clock clock() {
-        return Clock.systemUTC();
-    }
+public class Application implements CommandLineRunner {
+  private static final Logger logger = LoggerFactory.getLogger(Application.class);
+  private final Greeter greeter;
+  private final MessageSource messageSource;
+  @Value("${app.name}")
+  private String appName;
 
-    @Bean
-    public MessageSource messageSource() {
-    	ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasenames("locale");
-        messageSource.setDefaultEncoding("UTF-8");
+  public Application(Greeter greeter, MessageSource messageSource) {
+    this.greeter = greeter;
+    this.messageSource = messageSource;
+  }
 
-        return messageSource;
-    }
+  public static void main(final String[] args) {
+    SpringApplication.run(Application.class, args);
+  }
 
-    @Bean
-    public SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests().anyRequest().permitAll();
-        return http.build();
-    }
+  @Override
+  public void run(final String... strings) throws Exception {
+    Hello hello = greeter.name("ViBiOh");
 
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    logger.info(messageSource.getMessage("hello", new Object[]{appName, hello.name(), ISO_INSTANT.format(hello.moment())}, new Locale("fr", "FR")));
+  }
 }

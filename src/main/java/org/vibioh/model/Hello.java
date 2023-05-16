@@ -1,3 +1,6 @@
 package org.vibioh.model;
 
-public record Hello(String name, long moment) {}
+import java.time.Instant;
+
+public record Hello(String name, Instant moment) {
+}

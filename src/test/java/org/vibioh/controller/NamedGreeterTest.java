@@ -16,25 +16,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class HelloWorldControllerTest {
-    private static final long NOEL_2010_20H00 = 1293303600000L;
+class NamedGreeterTest {
+  private static final long NOEL_2010_20H00 = 1293303600000L;
 
-    @InjectMocks
-    private HelloWorldController controller;
+  @InjectMocks
+  private NamedGreeter controller;
 
-    @Mock
-    private DateService dateService;
+  @Mock
+  private DateService dateService;
 
-    @BeforeEach
-    public void setUp() {
-        when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
-    }
+  @BeforeEach
+  public void setUp() {
+    when(dateService.now()).thenReturn(Instant.ofEpochMilli(NOEL_2010_20H00));
+  }
 
-    @Test
-    void testHello() {
-        final Hello result = controller.get();
+  @Test
+  void testHello() {
+    final Hello result = controller.name("world");
 
-        assertNotNull(result);
-        assertNotEquals(0, result.moment());
-    }
+    assertNotNull(result);
+    assertNotEquals(0, result.moment());
+  }
 }

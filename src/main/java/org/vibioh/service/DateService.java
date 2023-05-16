@@ -1,6 +1,5 @@
 package org.vibioh.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Clock;
@@ -8,10 +7,13 @@ import java.time.Instant;
 
 @Service
 public class DateService {
-    @Autowired
-    private Clock clock;
+  private final Clock clock;
 
-    public Instant now() {
-        return Instant.now(clock);
-    }
+  public DateService(Clock clock) {
+    this.clock = clock;
+  }
+
+  public Instant now() {
+    return Instant.now(clock);
+  }
 }

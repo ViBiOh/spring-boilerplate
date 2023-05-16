@@ -1,7 +1,6 @@
 FROM openjdk:18-slim
 
 VOLUME /tmp
-EXPOSE 8080
 
 USER 65534
 
