@@ -26,10 +26,6 @@ spec:
     image:
       name: vibioh/spring-web-bp
       tag: "202304272022" # {"$imagepolicy": "default:flux-spring-api:tag"}
-    ingress:
-      enabled: false
-      hosts:
-        - spring.l3miage.fr
     port: 8080
     prometheus:
       port: 8080
