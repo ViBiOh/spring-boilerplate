@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>spring-web-bp</groupId>
-    <artifactId>spring-web-bp</artifactId>
+    <groupId>spring-boilerplate</groupId>
+    <artifactId>spring-boilerplate</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -18,7 +18,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <sonar.projectKey>ViBiOh_spring-web-bp</sonar.projectKey>
+        <sonar.projectKey>ViBiOh_spring-boilerplate</sonar.projectKey>
         <sonar.organization>vibioh</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>

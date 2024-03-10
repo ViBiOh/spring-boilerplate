@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: spring-web-bp
+  name: spring-boilerplate
   namespace: default
 spec:
   interval: 120m
@@ -22,9 +22,9 @@ spec:
   rollback:
     cleanupOnFail: true
   values:
-    nameOverride: spring-web-bp
+    nameOverride: spring-boilerplate
     image:
-      name: vibioh/spring-web-bp
+      name: vibioh/spring-boilerplate
       tag: "202304272022" # {"$imagepolicy": "default:flux-spring-api:tag"}
     port: 8080
     prometheus:

@@ -5,7 +5,7 @@ ifneq ("$(wildcard .env)","")
 	export
 endif
 
-APP_NAME = spring-web-bp
+APP_NAME = spring-boilerplate
 
 .DEFAULT_GOAL := app
 
