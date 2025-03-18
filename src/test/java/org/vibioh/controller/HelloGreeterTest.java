@@ -1,22 +1,21 @@
 package org.vibioh.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.MessageSource;
 import org.vibioh.model.Hello;
 import org.vibioh.service.DateService;
-
 import java.time.Instant;
 import java.util.Locale;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class HelloGreeterTest {
@@ -45,11 +44,11 @@ class HelloGreeterTest {
 
   @Test
   void render() {
-    when(messageSource.getMessage(eq("hello"), any(), eq(Locale.of("fr")))).thenReturn("Contenu moqueur");
+    when(messageSource.getMessage(eq("hello"), any(), eq(Locale.of("fr")))).thenReturn("mocked content");
 
     String result = controller.render(new Hello("render", dateService.now()), Locale.of("fr"));
 
     assertNotNull(result);
-    assertEquals("Contenu moqueur", result);
+    assertEquals("mocked content", result);
   }
 }

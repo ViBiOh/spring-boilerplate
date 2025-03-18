@@ -36,7 +36,7 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(final String... strings) throws Exception {
-    logger.info("Application started with args=" + Arrays.toString(strings));
+    logger.info("Application started with args={}", Arrays.toString(strings));
 
     writer.write("Name: ", locale);
     Hello hello = greeter.name(this.reader.read());
