@@ -24,8 +24,8 @@ spec:
   values:
     nameOverride: spring-boilerplate
     image:
-      name: vibioh/spring-boilerplate
-      tag: "202304272022" # {"$imagepolicy": "default:flux-spring-api:tag"}
+      name: rg.fr-par.scw.cloud/vibioh/spring-boilerplate
+      tag: "202504072152" # {"$imagepolicy": "default:flux-spring-api:tag"}
     port: 8080
     prometheus:
       port: 8080
