@@ -1,4 +1,4 @@
-FROM openjdk:25-slim
+FROM openjdk:26-slim
 
 VOLUME /tmp
 
