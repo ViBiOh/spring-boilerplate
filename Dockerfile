@@ -1,4 +1,4 @@
-FROM openjdk:26-slim
+FROM amazoncorretto:26-alpine
 
 VOLUME /tmp
 
