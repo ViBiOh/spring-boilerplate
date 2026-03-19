@@ -62,7 +62,7 @@ docker-build:
 		--name spring_web_bp \
 		--volume "${PWD}:/usr/src/app" \
 		--workdir /usr/src/app \
-		"maven:3-openjdk-18-slim" mvn clean install
+		"maven:3-amazoncorretto-25" mvn clean install
 
 .PHONY: docker-run
 docker-run:
@@ -74,4 +74,4 @@ docker-run:
 		--publish 8080:8080/tcp \
 		--volume "${PWD}:/usr/src/app" \
 		--workdir /usr/src/app \
-		"maven:3-openjdk-18-slim" mvn spring-boot:run
+		"maven:3-amazoncorretto-25" mvn spring-boot:run
