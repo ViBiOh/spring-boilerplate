@@ -28,7 +28,3 @@ updates:
       include: scope
     assignees:
       - ViBiOh
-  - package-ecosystem: "devcontainers"
-    directory: "/"
-    schedule:
-      interval: weekly
