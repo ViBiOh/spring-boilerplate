@@ -3,3 +3,4 @@
 
 # Maven
 target
+.m2/

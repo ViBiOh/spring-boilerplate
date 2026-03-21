@@ -42,6 +42,7 @@ app: init build
 .PHONY: init
 init:
 	@curl --disable --silent --show-error --location --max-time 30 "https://raw.githubusercontent.com/ViBiOh/scripts/main/bootstrap.sh" | bash -s -- "-c" "git_hooks"
+	@mkdir .m2/
 
 ## build: Build the application.
 .PHONY: build
@@ -61,7 +62,9 @@ docker-build:
 		--rm \
 		--name spring_web_bp \
 		--volume "${PWD}:/usr/src/app" \
+		--volume "${PWD}/.m2:/root/.m2" \
 		--workdir /usr/src/app \
+		--dns 1.1.1.1 \
 		"maven:3-amazoncorretto-25" mvn clean install
 
 .PHONY: docker-run
@@ -73,5 +76,7 @@ docker-run:
 		--name spring_web_bp \
 		--publish 8080:8080/tcp \
 		--volume "${PWD}:/usr/src/app" \
+		--volume "${PWD}/.m2:/root/.m2" \
 		--workdir /usr/src/app \
+		--dns 1.1.1.1 \
 		"maven:3-amazoncorretto-25" mvn spring-boot:run
